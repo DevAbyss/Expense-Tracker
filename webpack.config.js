@@ -45,6 +45,7 @@ module.exports = {
       filename: 'style.css',
     }),
   ],
+  devtool: 'inline-source-map',
   devServer: {
     open: true,
     hot: true,
