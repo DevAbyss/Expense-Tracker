@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
+  devtool: 'inline-source-map',
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'build'),
@@ -45,7 +46,6 @@ module.exports = {
       filename: 'style.css',
     }),
   ],
-  devtool: 'inline-source-map',
   devServer: {
     open: true,
     hot: true,
