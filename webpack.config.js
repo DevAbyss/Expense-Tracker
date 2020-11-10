@@ -1,10 +1,10 @@
 const path = require('path');
 
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  devtool: 'inline-source-map',
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'build'),
@@ -26,6 +26,7 @@ module.exports = {
       },
       {
         test: /\.html$/,
+        exclude: /node_modules/,
         use: [
           {
             loader: 'html-loader',
@@ -34,11 +35,16 @@ module.exports = {
       },
       {
         test: /\.css$/,
+        exclude: /node_modules/,
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
     ],
   },
+  devtool: 'inline-source-map',
   plugins: [
+    new CleanWebpackPlugin({
+      cleanAfterEveryBuildPatterns: ['build'],
+    }),
     new HtmlWebpackPlugin({
       template: './src/index.html',
     }),
