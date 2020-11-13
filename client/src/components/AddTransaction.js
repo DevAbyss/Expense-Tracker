@@ -4,7 +4,7 @@ import { GlobalContext } from '../context/GlobalStates';
 
 const AddTransaction = () => {
   const [text, setText] = useState('');
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState('');
 
   const { addTransaction } = useContext(GlobalContext);
 
@@ -22,10 +22,10 @@ const AddTransaction = () => {
 
   return (
     <>
-      <h3>Add new transaction</h3>
+      <h3>수입/지출 항목 추가</h3>
       <form onSubmit={onSubmit}>
         <div className='form-control'>
-          <label htmlFor='text'>Text</label>
+          <label htmlFor='text'>항목명</label>
           <input
             type='text'
             value={text}
@@ -35,9 +35,9 @@ const AddTransaction = () => {
         </div>
         <div className='form-control'>
           <label htmlFor='amount'>
-            Amount
+            금액
             <br />
-            (negative - expense, positive - income)
+            ('+': 수입, '-': 지출)
           </label>
           <input
             type='number'
@@ -46,7 +46,7 @@ const AddTransaction = () => {
             placeholder='Enter amount...'
           />
         </div>
-        <button className='btn'>Add transaction</button>
+        <button className='btn'>추가</button>
       </form>
     </>
   );

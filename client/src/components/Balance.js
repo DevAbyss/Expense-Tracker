@@ -10,7 +10,7 @@ const Balance = () => {
 
   return (
     <>
-      <h4>Your Balance</h4>
+      <h4>수익 금액</h4>
       <h1 id='balance'>${total}</h1>
     </>
   );
