@@ -1,16 +1,22 @@
 const express = require('express');
-const dotenv = require('dotenv');
-
-require('colors');
+// const mysql = require('mysql');
 const morgan = require('morgan');
+const db_config = require('./config/db');
+// const connection = db_config.init();
 
-dotenv.config({ path: './config/config.env' });
+require('dotenv').config();
+require('colors');
 
 const transactions = require('./routes/transactions');
 
 const app = express();
 
+// db_config.connect(connection);
+
+app.use(express.json());
 app.use('/api/v1/transactions', transactions);
+
+app.use(morgan('dev'));
 
 const PORT = process.env.PORT || 5000;
 
